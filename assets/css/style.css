@@ -441,11 +441,9 @@ h1, h2, h3, h4 {
   border-radius: 4px;
   background: var(--green-800);
   cursor: pointer;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 3;   /* 全站封面统一竖版，与人像栏一致 */
 }
-.work-card.tall { aspect-ratio: 2 / 3; }
-.work-card:nth-child(6n+2),
-.work-card:nth-child(6n+5) { aspect-ratio: 2 / 3; }
+.work-card.wide { aspect-ratio: 3 / 2; }   /* 横屏封面（首页 AI 影像入口） */
 
 .work-card img,
 .work-card video {
@@ -900,9 +898,8 @@ h1, h2, h3, h4 {
   .nav-links a { font-size: 18px; }
 
   .gallery { grid-template-columns: 1fr; }
-  .work-card,
-  .work-card:nth-child(6n+2),
-  .work-card:nth-child(6n+5) { aspect-ratio: 3 / 2; }
+  .work-card { aspect-ratio: 2 / 3; }
+  .work-card.wide { aspect-ratio: 3 / 2; }
 
   .hero-title { letter-spacing: 0.2em; text-indent: 0.2em; }
   .hero-poem { letter-spacing: 0.2em; font-size: 13.5px; }
