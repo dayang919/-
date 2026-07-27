@@ -449,7 +449,8 @@ h1, h2, h3, h4 {
 .work-card video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;   /* ✅ 完整显示，不裁剪，留白处显示背景色 */
+  background: var(--green-800); /* 留白区域用深色填充，视觉上像裱框 */
   transform: scale(1.001);
   transition: transform var(--dur) var(--ease-soft), filter var(--dur) var(--ease-soft);
   filter: saturate(0.92);
