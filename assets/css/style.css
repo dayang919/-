@@ -341,6 +341,67 @@ h1, h2, h3, h4 {
 }
 .strip-text a:hover { color: var(--gold); border-color: var(--gold); }
 
+/* ============ 作品区布局：左目录 + 网格 ============ */
+.works-layout {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+.toc {
+  display: none;
+  position: sticky;
+  top: calc(var(--nav-h) + 40px);
+  padding-top: 14px;
+}
+.toc.show { display: block; }
+.toc-title {
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--sage-dim);
+  margin-bottom: 18px;
+}
+.toc-link {
+  display: block;
+  font-size: 13.5px;
+  letter-spacing: 0.2em;
+  color: var(--sage);
+  padding: 7px 0 7px 14px;
+  border-left: 1px solid var(--line);
+  transition: color var(--dur) var(--ease-soft), border-color var(--dur) var(--ease-soft);
+}
+.toc-link.sub { padding-left: 30px; font-size: 12.5px; }
+.toc-link:hover { color: var(--gold-soft); }
+.toc-link.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+}
+
+@media (max-width: 960px) {
+  .works-layout { grid-template-columns: 1fr; }
+  .toc.show {
+    display: flex;
+    overflow-x: auto;
+    gap: 18px;
+    position: static;
+    padding: 0 0 18px;
+  }
+  .toc-title { display: none; }
+  .toc-link {
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 1px solid var(--line);
+    padding: 4px 2px;
+  }
+  .toc-link.sub { padding-left: 2px; }
+  .toc-link.active { border-bottom-color: var(--gold); }
+}
+
+/* 分组标题锚点：为固定导航留出滚动空间 */
+.series-header { scroll-margin-top: calc(var(--nav-h) + 24px); }
+
 /* ============ 作品筛选 ============ */
 .filter-bar {
   display: flex;

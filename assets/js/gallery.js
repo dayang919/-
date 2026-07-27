@@ -7,6 +7,9 @@
 
   var PLAY_SVG = '<svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12 Z"/></svg>';
   var visible = [];   // 当前可见作品（灯箱翻页用）
+  var groups = [];    // 当前分组锚点（左侧目录用）
+  var tocEl = document.getElementById("tocNav");
+  var tocIO = null;
 
   /* ---------- 工具 ---------- */
   function itemsOf(filter) {
@@ -67,7 +70,53 @@
     var h = document.createElement("div");
     h.className = "series-header" + (sub ? " sub" : "");
     h.innerHTML = "<span>" + text + "</span>";
+    h.id = "group-" + groups.length;
+    groups.push({ id: h.id, text: text, sub: !!sub });
     return h;
+  }
+
+  /* ---------- 左侧目录 ---------- */
+  function buildToc() {
+    if (!tocEl) return;
+    if (tocIO) { tocIO.disconnect(); tocIO = null; }
+    tocEl.innerHTML = "";
+    if (!groups.length) { tocEl.classList.remove("show"); return; }
+
+    var title = document.createElement("p");
+    title.className = "toc-title";
+    title.textContent = "目 录";
+    tocEl.appendChild(title);
+
+    groups.forEach(function (g, i) {
+      var a = document.createElement("a");
+      a.href = "#" + g.id;
+      a.className = "toc-link" + (g.sub ? " sub" : "");
+      a.textContent = g.text.replace(/[「」]/g, "");
+      a.setAttribute("data-target", g.id);
+      if (i === 0) a.classList.add("active");
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var el = document.getElementById(g.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      tocEl.appendChild(a);
+    });
+
+    tocEl.classList.add("show");
+
+    // 滚动高亮当前组
+    tocIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        tocEl.querySelectorAll(".toc-link").forEach(function (l) {
+          l.classList.toggle("active", l.getAttribute("data-target") === en.target.id);
+        });
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    groups.forEach(function (g) {
+      var el = document.getElementById(g.id);
+      if (el) tocIO.observe(el);
+    });
   }
 
   /* ---------- 渲染 ---------- */
@@ -77,6 +126,7 @@
 
   function render(filter, sub) {
     grid.innerHTML = "";
+    groups = [];
     visible = itemsOf(filter === "photo" && sub && sub !== "all" ? sub : filter);
 
     if (filter === "photo" && (!sub || sub === "all")) {
@@ -109,6 +159,7 @@
     } else {
       renderFlat(visible);
     }
+    buildToc();
   }
 
   /* ---------- 一级筛选 ---------- */
