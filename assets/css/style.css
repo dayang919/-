@@ -463,6 +463,73 @@ h1, h2, h3, h4 {
   transition: opacity var(--dur) var(--ease-soft), transform var(--dur) var(--ease-soft);
 }
 
+/* ============ 系列分组标题 ============ */
+.series-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 42px 0 6px;
+}
+.series-header:first-child { margin-top: 0; }
+.series-header span {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: 0.3em;
+  color: var(--gold-soft);
+  white-space: nowrap;
+}
+.series-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-gold), transparent);
+}
+.series-header.sub span {
+  font-size: 16px;
+  color: var(--sage);
+  letter-spacing: 0.24em;
+}
+.series-header.sub { margin: 26px 0 2px; }
+
+/* ============ 二级筛选（摄影子类） ============ */
+.sub-filter-bar {
+  display: none;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: -32px 0 48px;
+}
+.sub-filter-bar.show { display: flex; }
+.sub-filter-bar .filter-btn {
+  font-size: 12px;
+  padding: 8px 20px 8px 22px;
+  letter-spacing: 0.22em;
+}
+
+/* ============ 灯箱翻页 ============ */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(14, 22, 19, 0.4);
+  color: var(--cream);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease-soft);
+}
+.lightbox-nav:hover { border-color: var(--gold); color: var(--gold); }
+.lightbox-nav.prev { left: clamp(10px, 3vw, 40px); }
+.lightbox-nav.next { right: clamp(10px, 3vw, 40px); }
+@media (max-width: 640px) {
+  .lightbox-nav { width: 42px; height: 42px; font-size: 24px; }
+}
+
 /* ============ 灯箱 ============ */
 .lightbox {
   position: fixed;

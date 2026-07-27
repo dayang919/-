@@ -1,4 +1,4 @@
-# 野 · 集 — 摄影师个人网站
+# 野有叙 — 摄影师个人网站
 
 温柔、安静，像走进田野。深绿低饱和 + 暖金点缀，诗集式排版的画册型个人网站。
 
@@ -33,7 +33,7 @@
 cd portfolio
 git init
 git add .
-git commit -m "野·集：个人摄影网站"
+git commit -m "野有叙：个人摄影网站"
 git branch -M main
 git remote add origin https://github.com/<你的用户名>/<仓库名>.git
 git push -u origin main
