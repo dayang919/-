@@ -27,30 +27,31 @@
   <header class="page-head">
     <p class="ph-kicker reveal">SELECTED WORKS</p>
     <h1 class="reveal" data-delay="1">作&nbsp;品</h1>
-    <p class="ph-sub reveal" data-delay="2">一半是现实，一半是梦</p>
+    <p class="ph-sub reveal" data-delay="2">摄影是现实，AI是梦</p>
   </header>
 
-  <section class="section" style="padding-top: 56px;">
-    <!-- 筛选：全部 / 摄影 / AI 视频 -->
+  <section class="section works-section" style="padding-top: 56px;">
+    <!-- 一级筛选：摄影 / 摄影+AI融合视频 -->
     <div class="filter-bar reveal" id="filterBar">
-      <button class="filter-btn active" data-filter="all">全 部</button>
-      <button class="filter-btn" data-filter="photo">摄 影</button>
-      <button class="filter-btn" data-filter="video">AI 视 频</button>
+      <button class="filter-btn active" data-filter="photo">摄 影</button>
+      <button class="filter-btn" data-filter="video">摄影+AI融合视频</button>
     </div>
 
-    <!-- 二级筛选：选「摄影」时出现 -->
-    <div class="sub-filter-bar" id="subFilterBar">
-      <button class="filter-btn active" data-filter="all">全部摄影</button>
+    <!-- 二级筛选：摄影子栏目 -->
+    <div class="sub-filter-bar show" id="subFilterBar">
+      <button class="filter-btn active" data-filter="featured">精 选</button>
       <button class="filter-btn" data-filter="portrait">人 像</button>
-      <button class="filter-btn" data-filter="humanity">人 文</button>
       <button class="filter-btn" data-filter="landscape">风 景</button>
+      <button class="filter-btn" data-filter="humanity">人 文</button>
       <button class="filter-btn" data-filter="stilllife">静 物</button>
+      <button class="filter-btn" data-filter="meow">喵星人</button>
+      <button class="filter-btn" data-filter="all">全 部</button>
     </div>
 
-    <!-- 作品区：左侧目录 + 网格（JS 渲染，图片懒加载） -->
+    <!-- 作品区：左侧目录 + 内容（JS 渲染，图片懒加载） -->
     <div class="works-layout">
       <aside class="toc" id="tocNav" aria-label="作品目录"></aside>
-      <div class="gallery" id="galleryGrid"></div>
+      <div class="works-main" id="galleryGrid"></div>
     </div>
   </section>
 

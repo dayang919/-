@@ -35,16 +35,9 @@
 
       <!-- 联系方式 -->
       <div class="contact-info">
-        <p class="reveal">如果你想约一次拍摄、聊聊照片与梦，<br>或者只是想说一句"今天的云很好看"——都欢迎。</p>
-        <div class="reveal" data-delay="1">
-          <div class="contact-line"><b>邮 箱</b><a href="mailto:hello@example.com">hello@example.com</a></div>
-          <div class="contact-line"><b>微 信</b><span>your-wechat-id</span></div>
-          <div class="contact-line"><b>Instagram</b><a href="#" target="_blank" rel="noopener">@your.instagram</a></div>
-          <div class="contact-line"><b>小红书</b><a href="#" target="_blank" rel="noopener">@你的小红书</a></div>
+        <div class="reveal">
+          <div class="contact-line"><b>商务邮箱</b><a href="mailto:yeyouxu2026@163.com">yeyouxu2026@163.com</a></div>
         </div>
-        <p class="reveal" data-delay="2" style="margin-top:28px; font-size:13px; color:var(--sage-dim);">
-          回复通常在三天以内。<br>如果在田野里没有信号，可能会更久一点。
-        </p>
       </div>
 
       <!-- 留言板 -->
@@ -54,6 +47,10 @@
         <form class="gb-form" id="gbForm">
           <input type="text" name="name" placeholder="署名（可不填，默认为「路过的风」）" maxlength="20">
           <textarea name="msg" placeholder="想说什么……" maxlength="300" required></textarea>
+          <div class="gb-visibility">
+            <label><input type="radio" name="vis" value="public" checked><span>公开 · 所有访客可见</span></label>
+            <label><input type="radio" name="vis" value="private"><span>不公开 · 只有网站主人可见</span></label>
+          </div>
           <button type="submit" class="gb-submit">留 下</button>
         </form>
         <div class="gb-list" id="gbList"></div>
